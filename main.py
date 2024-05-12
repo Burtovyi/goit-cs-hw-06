@@ -58,13 +58,13 @@ def parse_post_data(post_data):
         }
     return None
 
-def run(server_class=HTTPServer, handler_class=MyServer, port=3001):  # Adjusted port
+def run(server_class=HTTPServer, handler_class=MyServer, port=3001):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print("Starting web server on port", port)
     httpd.serve_forever()
 
-def start_socket_server(port=5001):  # Adjusted port for socket server
+def start_socket_server(port=5001):
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind(('', port))
     server_socket.listen(5)
