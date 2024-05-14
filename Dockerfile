@@ -1,17 +1,12 @@
-# Using the latest Python 3 slim image
-FROM python:3.12-slim
+FROM python:3.10
 
-# Install pymongo for MongoDB integration
-RUN pip install pymongo
+WORKDIR /application
 
-# Setting up the working directory
-WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copying the necessary files
-COPY . /app
+COPY . .
 
-# Exposing the HTTP and Socket server ports
-EXPOSE 3001 5001
+EXPOSE 3000
 
-# Command to run the application
-CMD ["python", "main.py"]
+CMD [ "python", "main.py" ]
